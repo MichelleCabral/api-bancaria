@@ -47,4 +47,15 @@ public class ClienteService {
         cliente.email = dadosAtualizados.email;
         cliente.senha = dadosAtualizados.senha;
 
-        clienteRepository.persist(cliente
+        clienteRepository.persist(cliente);
+        return cliente;
+    }
+
+    public void deletarCliente(Long id) {
+        Cliente cliente = clienteRepository.findById(id);
+        if (cliente == null) {
+            throw new WebApplicationException("Cliente não encontrado.", 404);
+        }
+        clienteRepository.delete(cliente);
+    }
+}

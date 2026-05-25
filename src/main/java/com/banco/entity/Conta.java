@@ -2,6 +2,7 @@ package com.banco.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Conta extends PanacheEntity {
@@ -12,9 +13,8 @@ public class Conta extends PanacheEntity {
     @Enumerated(EnumType.STRING)
     public TipoConta tipo;
 
-    public Double saldo = 0.0;
+    public BigDecimal saldo = BigDecimal.ZERO;
 
     @ManyToOne
     public Cliente cliente;
 }
-

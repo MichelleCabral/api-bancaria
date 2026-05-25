@@ -1,4 +1,4 @@
-ppackage com.banco.service;
+package com.banco.service;
 
 import com.banco.entity.Conta;
 import com.banco.entity.Transacao;
@@ -11,6 +11,7 @@ import jakarta.ws.rs.WebApplicationException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @ApplicationScoped
 public class TransacaoService {
@@ -37,7 +38,7 @@ public class TransacaoService {
 
         Transacao transacao = new Transacao();
         transacao.tipo = TipoTransacao.TRANSFERENCIA;
-        transacao.valor = valor.doubleValue();
+        transacao.valor = valor;
         transacao.dataHora = LocalDateTime.now();
         transacao.contaOrigem = origem;
         transacao.contaDestino = destino;
@@ -47,5 +48,17 @@ public class TransacaoService {
         contaRepository.persist(destino);
 
         return transacao;
+    }
+
+    public Transacao buscarPorId(Long id) {
+        Transacao transacao = transacaoRepository.findById(id);
+        if (transacao == null) {
+            throw new WebApplicationException("Transação não encontrada.", 404);
+        }
+        return transacao;
+    }
+
+    public List<Transacao> listarPorConta(Long contaId) {
+        return transacaoRepository.find("contaOrigem.id = ?1 or contaDestino.id = ?1", contaId).list();
     }
 }

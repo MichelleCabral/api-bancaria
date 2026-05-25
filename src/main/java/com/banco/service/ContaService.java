@@ -44,7 +44,7 @@ public class ContaService {
 
         Transacao transacao = new Transacao();
         transacao.tipo = TipoTransacao.DEPOSITO;
-        transacao.valor = valor.doubleValue();
+        transacao.valor = valor;
         transacao.dataHora = LocalDateTime.now();
         transacao.contaDestino = conta;
 
@@ -66,7 +66,7 @@ public class ContaService {
 
         Transacao transacao = new Transacao();
         transacao.tipo = TipoTransacao.SAQUE;
-        transacao.valor = valor.doubleValue();
+        transacao.valor = valor;
         transacao.dataHora = LocalDateTime.now();
         transacao.contaOrigem = conta;
 
@@ -89,7 +89,7 @@ public class ContaService {
 
         Transacao transacao = new Transacao();
         transacao.tipo = TipoTransacao.TRANSFERENCIA;
-        transacao.valor = valor.doubleValue();
+        transacao.valor = valor;
         transacao.dataHora = LocalDateTime.now();
         transacao.contaOrigem = origem;
         transacao.contaDestino = destino;

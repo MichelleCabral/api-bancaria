@@ -6,7 +6,7 @@
     <groupId>com.banco</groupId>
     <artifactId>api.bancaria</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>quarkus</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <compiler-plugin.version>3.15.0</compiler-plugin.version>
@@ -60,3 +60,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
         </dependency>
+
+        <!-- Banco H2 para testes -->
+        <dependency>
+            <groupId>

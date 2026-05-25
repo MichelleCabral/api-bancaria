@@ -2,6 +2,7 @@ package com.banco.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,7 +11,7 @@ public class Transacao extends PanacheEntity {
     @Enumerated(EnumType.STRING)
     public TipoTransacao tipo;
 
-    public Double valor;
+    public BigDecimal valor;
 
     public LocalDateTime dataHora;
 
